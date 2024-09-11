@@ -1,0 +1,24 @@
+<!-- tasks/templates/tasks/view_all_tasks.html -->
+
+{% extends 'tasks/base.html' %} {% block content %}
+<h1>All Tasks</h1>
+<a href="{% url 'add_task' %}">Add New Task</a>
+<h2>Filter by Priority</h2>
+<ul>
+  <li><a href="{% url 'filter_tasks_by_priority' 'High' %}">High</a></li>
+  <li><a href="{% url 'filter_tasks_by_priority' 'Medium' %}">Medium</a></li>
+  <li><a href="{% url 'filter_tasks_by_priority' 'Low' %}">Low</a></li>
+  <li><a href="{% url 'view_all_tasks' %}">View All</a></li>
+</ul>
+<ul>
+  {% for task in tasks %}
+  <li>
+    <strong>{{ task.title }}</strong> - {{ task.priority }} - {{ task.status }}
+    <a href="{% url 'edit_task' task.id %}">Edit</a> |
+    <a href="{% url 'delete_task' task.id %}">Delete</a>
+  </li>
+  {% empty %}
+  <li>No tasks available.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

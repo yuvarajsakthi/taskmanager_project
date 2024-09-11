@@ -1,0 +1,13 @@
+<!-- tasks/templates/tasks/base.html -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task Manager</title>
+  </head>
+  <body>
+    {% if messages %} {% for message in messages %}
+    <p style="color: green">{{ message }}</p>
+    {% endfor %} {% endif %} {% block content %} {% endblock %}
+  </body>
+</html>
